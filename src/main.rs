@@ -1,15 +1,10 @@
-use raylib::prelude::*;
+use std::fs::File;
+use std::io::prelude::*;
 
-fn main() {
-    let (mut rl, thread) = raylib::init()
-        .size(700, 500)
-        .title("Thermostatventil")
-        .build();
+pub mod parser;
 
-    while !rl.window_should_close() {
-        let mut d = rl.begin_drawing(&thread);
+fn main() -> std::io::Result<()> {
+    let file = File::open("assets/test.html")?;
 
-        d.clear_background(Color::RAYWHITE);
-        d.draw_text("Hello, Ray!", 300, 235, 20, Color::LIGHTGRAY)
-    }
+    Ok(())
 }
